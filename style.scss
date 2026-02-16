@@ -8,6 +8,8 @@
     color-scheme: dark;
 }
 
+$card-gray: #232323;
+
 html,
 body {
     width: 100%;
@@ -22,14 +24,26 @@ body {
     gap: $gap;
 }
 
+@mixin btn($font: 1rem){
+    padding: .5rem 2rem;
+    font-size: $font;
+    background-color: #393939;
+    border: none;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+section {
+    max-width: 1600px;
+    padding: 1rem;
+}
+
 main {
     width: 100%;
     @include flex-col(1rem);
     align-items: center;
-    padding: 1rem;
     
     .view1 {
-        max-width: 1600px;
         @include flex-col(1rem);
         // margin-inline: auto;
 
@@ -100,7 +114,6 @@ main {
     .view2 {
         @include flex-col(1rem);
         width: 100%;
-        max-width: 1600px;
         // margin-inline: auto;
 
         .score {
@@ -111,7 +124,7 @@ main {
             .top, .bottom {
                 width: 100%;
                 display: flex;
-                justify-content: space-between;
+                justify-content: space-around;
                 
                 div {
                     width: 100%;
@@ -128,6 +141,213 @@ main {
                     }
                 }
 
+            }
+        }
+    }
+
+    .view3 {
+        @include flex-col(1rem);
+
+        .top, .bottom {
+            @include flex-col(1rem);
+
+            .image {
+                width: 100%;
+                border-radius: 1rem;
+                overflow: hidden;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .text-container {
+                background-color: $card-gray;
+                padding: 2rem;
+                border-radius: 1rem;
+                @include flex-col(4rem);
+
+                h1 {
+                    text-transform: uppercase;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+
+                .text {
+                    @include flex-col(1rem);
+
+                    h2 {
+                        font-size: 2.5rem;
+                        font-weight: 400;
+                        text-transform: uppercase;
+                        width: 95%;
+                    }
+
+                    .paragraphs {
+                        @include flex-col();
+
+                        p {
+                            font-size: 1.2rem;
+                            line-height: 2rem;
+                            color: #9e9e9e;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .view4 {
+        @include flex-col(1rem);
+        width: 100%;
+
+        .heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            h1 {
+                font-size: 3rem;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+            p {
+                @include btn();
+                text-transform: uppercase;
+                display: none;
+                cursor: pointer;
+
+                span {
+                    margin-left: .8rem
+                }
+            }
+        }
+
+        .cards {
+            @include flex-col(1rem);
+            
+            .card {
+                width: 100%;
+                aspect-ratio: 1/1;
+                background-color: red;
+                border-radius: 1rem;
+                padding: 1rem;
+                @include flex-col();
+                justify-content: space-between;
+
+                .icons {
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 1rem;
+
+                    .icon {
+                        font-size: 1.5rem;
+                        color: #b1b1b1;
+                        width: 3rem;
+                        height: 3rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #4141416a;
+                        border-radius: 50%;
+                        border: 1px solid #5e5e5ec5;
+                        backdrop-filter: blur(6px);
+                        cursor: pointer;
+
+                        i {
+                            font-weight: 100;
+                        }
+
+                    }
+                }
+
+                .text {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: #4141416a;
+                    backdrop-filter: blur(20px);
+                    padding: 1rem 1rem;
+                    border-radius: .4rem;
+                    border: 1px solid #5e5e5ec5;
+
+                    h1 {
+                        font-size: 1.5rem;
+                        font-weight: 400;
+                        text-transform: uppercase;
+                    }
+                    h2 {
+                        font-size: 1.1rem;
+                        font-weight: 400;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            .card:nth-child(1) {
+                background: url(./images/card1.webp);
+                background-size: cover;
+            }
+            .card:nth-child(2) {
+                background: url(./images/card2.webp);
+                background-size: cover;
+            }
+            .card:nth-child(3) {
+                background: url(./images/card3.webp);
+                background-size: cover;
+            }
+            
+            
+        }
+
+        .bottom {
+            @include flex-col(1rem);
+
+            .image {
+                border-radius: 1rem;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .text {
+                background-color: $card-gray;
+                padding: 2rem;
+                border-radius: 1rem;
+                @include flex-col(4rem);
+
+                div {
+
+                    h1 {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        color: #9e9e9e;
+                    }
+                    
+                    h2 {
+                        font-size: 2.5rem;
+                        text-transform: uppercase;
+                        font-weight: 400;
+                        margin-top: 1rem
+                    }
+                }
+
+                button {
+                    @include btn(1.2rem);
+                    text-transform: uppercase;
+
+                    span {
+                        margin-left: 1rem;
+                    }
+                }
             }
         }
     }
@@ -163,6 +383,71 @@ main {
                     div {
                         h1 {
                             font-size: 4.5rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .view3 {
+
+            .top, .bottom {
+
+                .image, .text-container {
+                    width: 50%;
+                    justify-content: space-between;
+                }
+                
+                .text-container {
+                    padding: 3rem;
+                    
+                    .text {
+                        h2 {
+                            font-size: 3rem;
+                        }
+
+                        .paragraphs {
+                            flex-direction: row;
+                            gap: 1rem;
+                        }
+                    }
+                }
+            }
+            .top {
+                flex-direction: row-reverse;
+            }
+            .bottom {
+                flex-direction: row;
+            }
+        }
+
+        .view4 {
+
+            .heading {
+                p {
+                    display: block;
+                }
+            }
+
+            .cards {
+                flex-direction: row;
+            }
+
+            .bottom {
+                flex-direction: row;
+
+                .image, .text {
+                    width: 50%;
+                }
+
+                .text {
+                    justify-content: space-between;
+                    padding: 3rem;
+
+                    div {
+                        h2 {
+                            width: 80%;
+                            font-size: 3rem;
                         }
                     }
                 }
